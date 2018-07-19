@@ -9,6 +9,8 @@
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "allowSyntheticDefaultImports": true,
+    "strictPropertyInitialization": false, // https://github.com/kaorun343/vue-property-decorator/issues/81#issuecomment-364636419
+    "noImplicitAny": false, // due @Getter and @Action
     "sourceMap": true,
     "baseUrl": ".",
     "types": [

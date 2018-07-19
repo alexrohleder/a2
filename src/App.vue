@@ -8,6 +8,27 @@
   </div>
 </template>
 
+<script lang="ts">
+import firebase from 'firebase/app';
+import { Action } from 'vuex-class';
+import { Component, Vue } from 'vue-property-decorator';
+import { Actions as AuthActions } from '@/store/auth';
+
+@Component
+export default class App extends Vue {
+  @Action(AuthActions.LOAD_USER_PROFILE)
+  private loadUserProfile;
+
+  private created() {
+    firebase.auth().onAuthStateChanged(async (authState) => {
+      if (authState !== null) {
+        await this.loadUserProfile(authState);
+      }
+    });
+  }
+}
+</script>
+
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
