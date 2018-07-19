@@ -29,22 +29,18 @@ export default class App extends Vue {
 }
 </script>
 
-<style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+<style lang="sass">
+@import '~bulma/sass/utilities/controls'
+@import '~bulma/sass/base/generic'
+@import '~bulma/sass/base/minireset'
+@import '~bulma/sass/base/helpers'
+@import '~bulma/sass/elements/title'
+@import '~bulma/sass/elements/button'
+@import '~bulma/sass/components/navbar'
+@import '~bulma/sass/elements/form'
+
+html,
+body,
+#app
+  height: 100%
 </style>
