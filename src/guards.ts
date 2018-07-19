@@ -53,3 +53,15 @@ export const auth: NavigationGuard = (to, from, next) => {
 
   next();
 };
+
+export const precedence: NavigationGuard = (to, from, next) => {
+  to.matched.forEach((route) => {
+    if (route.meta.precedence && route.meta.precedence !== from.name) {
+      next({
+        name: from.name,
+      });
+    }
+  });
+
+  next();
+};

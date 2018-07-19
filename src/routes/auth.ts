@@ -53,6 +53,7 @@ export default [
     },
     meta: {
       auth: AuthGuardFlag.CANNOT_BE_AUTHENTICATED,
+      precedence: 'auth.sign-up',
     },
   },
   {
@@ -64,6 +65,7 @@ export default [
     },
     meta: {
       auth: AuthGuardFlag.CANNOT_BE_AUTHENTICATED,
+      precedence: 'auth.sign-up.2',
     },
   },
   {
