@@ -1,10 +1,9 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+    <mobile-main-content>
+      <component v-if="currentLayoutComponent" :is="currentLayoutComponent" />
+      <router-view v-else />
+    </mobile-main-content>
   </div>
 </template>
 
@@ -13,8 +12,13 @@ import firebase from 'firebase/app';
 import { Action } from 'vuex-class';
 import { Component, Vue } from 'vue-property-decorator';
 import { Actions as AuthActions } from '@/store/auth';
+import MobileMainContent from '@/components/MobileMainContent.vue';
 
-@Component
+@Component({
+  components: {
+    MobileMainContent,
+  },
+})
 export default class App extends Vue {
   @Action(AuthActions.LOAD_USER_PROFILE)
   private loadUserProfile;
@@ -25,6 +29,15 @@ export default class App extends Vue {
         await this.loadUserProfile(authState);
       }
     });
+  }
+
+  private get currentLayoutComponent(): any {
+    const { matched } = this.$route;
+    const route = matched[0];
+
+    if (route && route.components && route.components.layout) {
+      return route.components.layout;
+    }
   }
 }
 </script>
