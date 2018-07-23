@@ -1,3 +1,5 @@
+import { AuthGuardFlag } from '@/guards';
+
 const layout = () => import( /* webpackChunkName: "auth" */ '@/views/auth/Layout.vue');
 const SignIn = () => import( /* webpackChunkName: "auth" */ '@/views/auth/SignIn.vue');
 const Welcome = () => import( /* webpackChunkName: "auth" */ '@/views/auth/Welcome.vue');
@@ -16,6 +18,9 @@ export default [
       layout,
       content: Welcome,
     },
+    meta: {
+      auth: AuthGuardFlag.CANNOT_BE_AUTHENTICATED,
+    },
   },
   {
     path: '/sign-in',
@@ -23,6 +28,9 @@ export default [
     components: {
       layout,
       content: SignIn,
+    },
+    meta: {
+      auth: AuthGuardFlag.CANNOT_BE_AUTHENTICATED,
     },
   },
   {
@@ -32,6 +40,9 @@ export default [
       layout,
       content: SignUp1,
     },
+    meta: {
+      auth: AuthGuardFlag.CANNOT_BE_AUTHENTICATED,
+    },
   },
   {
     path: '/sign-up/inform-your-email',
@@ -39,6 +50,9 @@ export default [
     components: {
       layout,
       content: SignUp2,
+    },
+    meta: {
+      auth: AuthGuardFlag.CANNOT_BE_AUTHENTICATED,
     },
   },
   {
@@ -48,6 +62,9 @@ export default [
       layout,
       content: SignUp3,
     },
+    meta: {
+      auth: AuthGuardFlag.CANNOT_BE_AUTHENTICATED,
+    },
   },
   {
     path: '/reset-password',
@@ -56,12 +73,18 @@ export default [
       layout,
       content: ResetPassword,
     },
+    meta: {
+      auth: AuthGuardFlag.CANNOT_BE_AUTHENTICATED,
+    },
   },
   {
     path: '/confirm-reset-password',
     components: {
       layout,
       content: ConfirmResetPassword,
+    },
+    meta: {
+      auth: AuthGuardFlag.CANNOT_BE_AUTHENTICATED,
     },
   },
   {
@@ -70,6 +93,9 @@ export default [
     components: {
       layout,
       content: ConfirmProfile,
+    },
+    meta: {
+      auth: AuthGuardFlag.MUST_BE_AUTHENTICATED,
     },
   },
 ];
