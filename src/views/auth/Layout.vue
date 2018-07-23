@@ -1,8 +1,31 @@
 <template>
-  <section class="auth-layout">
-    <router-view name="content" />
-  </section>
+  <div class="auth-layout">
+    <transition :name="transitionName">
+      <router-view name="content" />
+    </transition>
+  </div>
 </template>
+
+<script lang="ts">
+import { Component, Watch, Vue } from 'vue-property-decorator';
+
+@Component
+export default class Layout extends Vue {
+  private transitionName: string = 'slide-back';
+  private previousRoutes: string[] = [];
+
+  @Watch('$route')
+  private beforeRouteUpdate(to: any, from: any) {
+    if (this.previousRoutes.indexOf(to.fullPath) > -1) {
+      this.transitionName = 'slide-back';
+      this.previousRoutes.splice(this.previousRoutes.indexOf(to.fullPath), 1);
+    } else {
+      this.transitionName = 'slide-foward';
+      this.previousRoutes.push(from.fullPath);
+    }
+  }
+}
+</script>
 
 <style lang="sass">
 @import '~bulma/sass/components/navbar'
@@ -62,4 +85,23 @@
     &:focus
       outline: none
       box-shadow: none
+  .slide-foward-enter-active,
+  .slide-foward-leave-active,
+  .slide-back-enter-active,
+  .slide-back-leave-active
+    transition: all .25s ease
+    position: absolute
+    width: 100%
+  .slide-back-enter,
+  .slide-foward-leave-to
+    transform: translate3d(-100%, 0, 0)
+  .slide-foward-enter,
+  .slide-back-leave-to
+    transform: translate3d(100%, 0, 0)
+  .slide-back-enter,
+  .slide-foward-enter
+    opacity: 1
+  .slide-back-leave-to,
+  .slide-foward-leave-to
+    opacity: 0
 </style>
