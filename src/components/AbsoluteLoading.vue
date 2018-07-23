@@ -18,6 +18,8 @@
   align-items: center
   justify-content: center
   background: white
+  svg
+    height: 7em
   & > *
     animation-duration: 1s
     animation-fill-mode: both

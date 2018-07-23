@@ -77,4 +77,7 @@ html,
 body,
 #app
   height: 100%
+
+.navbar svg
+  height: $size-6
 </style>
