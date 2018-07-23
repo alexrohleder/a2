@@ -1,6 +1,6 @@
 <template>
   <div class="auth-layout">
-    <transition :name="transitionName">
+    <transition :name="transitionName" @after-enter="afterTransitionEnter">
       <router-view name="content" />
     </transition>
   </div>
@@ -13,6 +13,14 @@ import { Component, Watch, Vue } from 'vue-property-decorator';
 export default class Layout extends Vue {
   private transitionName: string = 'slide-back';
   private previousRoutes: string[] = [];
+
+  private afterTransitionEnter(el: HTMLElement) {
+    const input = el.querySelector('input');
+
+    if (input) {
+      input.focus();
+    }
+  }
 
   @Watch('$route')
   private beforeRouteUpdate(to: any, from: any) {
