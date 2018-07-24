@@ -77,7 +77,31 @@ html,
 body,
 #app
   height: 100%
+a,
+a:hover
+  color: inherit
+  text-decoration: underline
 
+.navbar,
+.navbar-menu,
+.navbar-start,
+.navbar-end
+  display: flex !important
+  align-items: stretch
+.navbar-menu
+  @extend .is-size-7
+  flex-grow: 1
+  flex-shrink: 0
+  box-shadow: none !important
+.navbar-end
+  justify-content: flex-end
+  margin-left: auto
+
+.button svg,
 .navbar svg
   height: $size-6
+
+.button svg
+  position: absolute
+  left: $size-6
 </style>
