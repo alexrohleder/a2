@@ -6,8 +6,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "npm-run-all deploy:*",
-    "deploy:hosting": "npm run build && firebase deploy --only hosting"
+    "deploy": "npm-run-all -p deploy:*",
+    "deploy:hosting": "npm run build && firebase deploy --only hosting",
+    "deploy:firestore": "firebase deploy --only firestore"
   },
   "dependencies": {
     "bulma": "^0.7.1",
