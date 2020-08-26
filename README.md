@@ -2,7 +2,7 @@
 
 Hello! This is the source code of a [series of articles about authenticating with firebase, typescript and vue](docs/articles.md). It take as base the [Airbnb android app](https://play.google.com/store/apps/details?id=com.airbnb.android&hl=en) and uses the newest version of the proposed technologies. Questions, feedback and requests are welcome via the issue board.
 
-[play with a live demo](https://a2.alexrohleder.com)
+[play with a live demo](https://auth-with-firestore-ts-vue.web.app)
 
 ### :sparkles: Features
 
